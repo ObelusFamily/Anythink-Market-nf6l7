@@ -104,6 +104,7 @@ class ItemsRepository(BaseRepository):  # noqa: WPS214
         self,
         *,
         tag: Optional[str] = None,
+        title: Optional[str] = None,
         seller: Optional[str] = None,
         favorited: Optional[str] = None,
         limit: int = 20,

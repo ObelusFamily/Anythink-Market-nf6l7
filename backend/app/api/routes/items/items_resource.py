@@ -22,8 +22,8 @@ from app.models.schemas.items import (
     ListOfItemsInResponse,
 )
 from app.resources import strings
-from app.services.items import check_item_exists, get_slug_for_item
 from app.services.event import send_event
+from app.services.items import check_item_exists, get_slug_for_item
 
 router = APIRouter()
 
@@ -35,6 +35,7 @@ async def list_items(
     items_repo: ItemsRepository = Depends(get_repository(ItemsRepository)),
 ) -> ListOfItemsInResponse:
     items = await items_repo.filter_items(
+        title=items_filters.title,
         tag=items_filters.tag,
         seller=items_filters.seller,
         favorited=items_filters.favorited,
